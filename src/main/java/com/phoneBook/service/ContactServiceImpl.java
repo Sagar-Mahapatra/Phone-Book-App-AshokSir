@@ -1,5 +1,6 @@
 package com.phoneBook.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> getAllContacts() {
-		List<Contact> list = null;
+		List<Contact> list = new ArrayList<>();
 		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
 		try {
 			list = contactRepo.findAll();
