@@ -26,7 +26,7 @@ public class ContactController {
 	public String loadForm(Model model) {
 		System.out.println("-------loadForm() in controller executed----------");
 		model.addAttribute("contact", new Contact());
-		return "contact";
+		return "contacts";
 	}
 
 	@PostMapping(value = "/save_contact")
