@@ -1,6 +1,5 @@
 package com.phoneBook.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,29 +20,26 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public boolean saveContact(Contact contact) {
 		System.out.println("----------saveContact() in ContactServiceImpl class executed--------");
-		try {
-			System.out.println("----------try block in saveContact() in ContactServiceImpl class executed--------");
-			contactRepo.save(contact);
+
+		Contact save = contactRepo.save(contact);
+		if (save != null && save.getContactId() != null) {
+			System.out.println("----------if block in saveContact() in ContactServiceImpl class executed--------");
 			return true;
-		} catch (Exception e) {
+		} else {
 			System.out.println("----------catch block in saveContact() in ContactServiceImpl class executed--------");
-			e.printStackTrace();
 			return false;
 		}
+
 	}
 
 	@Override
 	public List<Contact> getAllContacts() {
-		List<Contact> list = new ArrayList<>();
-		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
-		try {
-			list = contactRepo.findAll();
-			return list;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return list;
-		}
 
+		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
+
+		List<Contact> findAll = contactRepo.findAll();
+
+		return findAll;
 	}
 
 	@Override
@@ -57,35 +53,13 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public boolean updateContact(Contact contact) {
-		System.out.println("----------updateContact() in ContactServiceImpl class executed--------");
-		try {
-			System.out.println("----------try block in updateContact() in ContactServiceImpl class executed--------");
-			contactRepo.save(contact);
-			return true;
-		} catch (Exception e) {
-			System.out
-					.println("----------catch bloack in updateContact() in ContactServiceImpl class executed--------");
-			e.printStackTrace();
-			return false;
-		}
-
-	}
-
-	@Override
 	public boolean deleteContactById(Long Id) {
 		System.out.println("----------deleteContactById() in ContactServiceImpl class executed--------");
-		try {
-			System.out.println(
-					"---------- try block in deleteContactById() in ContactServiceImpl class executed--------");
-			Contact contact = contactRepo.findById(Id).get();
-
-			contactRepo.delete(contact);
+		boolean status = contactRepo.existsById(Id);
+		if (status) {
+			contactRepo.deleteById(Id);
 			return true;
-		} catch (Exception e) {
-			System.out.println(
-					"----------catch block in deleteContactById() in ContactServiceImpl class executed--------");
-			e.printStackTrace();
+		} else {
 			return false;
 		}
 

@@ -75,7 +75,7 @@ public class ContactController {
 
 		System.out.println("-------updateContact() in controller class executed----------");
 		System.out.println("contact_id:: " + contact.getContactId());
-		boolean res = contactService.updateContact(contact);
+		boolean res = contactService.saveContact(contact);
 		if (res) {
 			model.addAttribute("contact", new Contact());
 			session.setAttribute("message", new Message("Contact Updated Successfully...", "alert-success"));

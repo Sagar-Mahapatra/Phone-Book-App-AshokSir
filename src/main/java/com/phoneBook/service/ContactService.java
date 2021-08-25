@@ -12,8 +12,6 @@ public interface ContactService {
 
 	Contact getContactById(Long Id);
 
-	boolean updateContact(Contact contact);
-
 	boolean deleteContactById(Long Id);
 
 }
