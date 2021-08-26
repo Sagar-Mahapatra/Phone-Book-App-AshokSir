@@ -22,6 +22,7 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 
+//	Form load hander
 	@GetMapping("/Contact Info")
 	public String loadForm(Model model) {
 		System.out.println("-------loadForm() in controller executed----------");
@@ -29,26 +30,29 @@ public class ContactController {
 		return "contacts";
 	}
 
+//	Save Contact hander
 	@PostMapping(value = "/save_contact")
-	public String saveContact(@RequestBody Contact contact, HttpSession session, Model model) {
+	public String saveContact(Contact contact, Model model) {
 
 		System.out.println("Contact::  " + contact);
 		System.out.println("-------saveContact() in controller  executed----------");
+
 		if (contactService.saveContact(contact)) {
+
 			System.out.println("-------if block in controller saveContact() executed----------");
-			session.setAttribute("message",
-					new Message("-------Contact Saved Successfully----------", "alert-success"));
-			model.addAttribute("contact", new Contact());
+
+			model.addAttribute("success", "Contact Saved Successfully...");
+
 		}
 
 		else {
 			System.out.println("-------else block in controller saveContact() executed----------");
-			session.setAttribute("message",
-					new Message("-------Something Went Wrong, please try again----------", "alert-danger"));
-			model.addAttribute("contact", contact);
+
+			model.addAttribute("error", "Something Went Wrong, Please try Again !!!");
+
 		}
 
-		return "contact";
+		return "contacts";
 
 	}
 

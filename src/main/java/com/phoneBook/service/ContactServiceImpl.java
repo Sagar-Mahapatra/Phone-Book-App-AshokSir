@@ -19,6 +19,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean saveContact(Contact contact) {
+		contact.setIsActive('Y');
 		System.out.println("----------saveContact() in ContactServiceImpl class executed--------");
 
 		Contact save = contactRepo.save(contact);
