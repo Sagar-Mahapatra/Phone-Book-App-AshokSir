@@ -8,46 +8,55 @@
 <title>View Contacts Page</title>
 
 <!-- adding Bootstrap CSS CDN -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 </head>
 
 <body>
+	<!-- 	table starts -->
+	<div class="container text-center">
+		<div class="bg-primary">
+			<h1 class="text-white">All Contacts</h1>
+		</div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">First</th>
-				<th scope="col">Last</th>
-				<th scope="col">Handle</th>
-			</tr>
-		</thead>
-		<tbody>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Contact Id</th>
+					<th scope="col">Contact Name</th>
+					<th scope="col">Contact Number</th>
+					<th scope="col">Contact Email</th>
+					<th scope="col">Created_Date</th>
+					<th scope="col">Updated_Date</th>
+				</tr>
+			</thead>
+			<tbody>
 
-			<c:forEach var="contact" items="${allContacts}"></c:forEach>
+				<c:forEach var="contact" items="${allContacts}">
 
-			<tr>
-				<th scope="row">1</th>
-				<td>${contact.contactName}</td>
-				<td>${contact.contactNumber}</td>
-				<td>${contact.contactEmail}</td>
-			</tr>
+					<tr>
+						<td>${contact.contactId}</td>
+						<td>${contact.contactName}</td>
+						<td>${contact.contactNumber}</td>
+						<td>${contact.contactEmail}</td>
+						<td>${contact.createdDate}</td>
+						<td>${contact.updatedDate}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	<!-- 	table ends -->
 
-		</tbody>
-	</table>
 
 
 
+	<!-- Optional JavaScript; choose one of the two! -->
 
-
-
-	<!-- adding jQuery -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<!-- adding bootstrap JS -->
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

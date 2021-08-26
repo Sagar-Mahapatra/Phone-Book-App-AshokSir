@@ -75,7 +75,7 @@
 				<!-- Form Ends -->
 			</div>
 			<div class="card-footer text-white">
-				<a href="#" class="btn btn-primary">View All Contacts</a>
+				<a href="viewAllcontacts" class="btn btn-primary">View All Contacts</a>
 			</div>
 		</div>
 	</div>
