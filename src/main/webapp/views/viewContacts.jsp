@@ -28,6 +28,8 @@
 					<th scope="col">Contact Email</th>
 					<th scope="col">Created_Date</th>
 					<th scope="col">Updated_Date</th>
+					<th scope="col" colspan="2">Operations</th>
+
 				</tr>
 			</thead>
 			<tbody>
@@ -41,6 +43,8 @@
 						<td>${contact.contactEmail}</td>
 						<td>${contact.createdDate}</td>
 						<td>${contact.updatedDate}</td>
+						<td><a href="#" class="btn btn-primary">Edit</a></td>
+						<td><a href="#" class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
