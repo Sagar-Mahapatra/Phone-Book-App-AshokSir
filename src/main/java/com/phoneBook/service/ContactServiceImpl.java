@@ -38,7 +38,7 @@ public class ContactServiceImpl implements ContactService {
 
 		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
 
-		List<Contact> findAll = contactRepo.findAll();
+		List<Contact> findAll = contactRepo.getAllActiveContacts();
 
 		return findAll;
 	}
