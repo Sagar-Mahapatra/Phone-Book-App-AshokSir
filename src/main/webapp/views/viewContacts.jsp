@@ -43,12 +43,17 @@
 						<td>${contact.contactEmail}</td>
 						<td>${contact.createdDate}</td>
 						<td>${contact.updatedDate}</td>
-						<td><a href="#" class="btn btn-primary">Edit</a></td>
-						<td><a href="#" class="btn btn-danger">Delete</a></td>
+						<td><a href="editContact?cid=${contact.contactId}"
+							class="btn btn-primary">Edit</a></td>
+						<td><a href="deleteContact?cid=${contact.contactId}"
+							class="btn btn-danger" onclick="return confirmDelete()">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="container">
+			<a href="/Contact Info" class="btn btn-primary">Registration Page</a>
+		</div>
 	</div>
 	<!-- 	table ends -->
 
@@ -62,5 +67,10 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
+	<script type="text/javascript">
+		function confirmDelete() {
+			return confirm('Do you want to delete this record ?');
+		}
+	</script>
 </body>
 </html>

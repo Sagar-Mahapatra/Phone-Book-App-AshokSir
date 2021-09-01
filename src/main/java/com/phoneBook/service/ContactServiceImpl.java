@@ -56,9 +56,11 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public boolean deleteContactById(Long Id) {
 		System.out.println("----------deleteContactById() in ContactServiceImpl class executed--------");
-		boolean status = contactRepo.existsById(Id);
-		if (status) {
-			contactRepo.deleteById(Id);
+		Optional<Contact> findById = contactRepo.findById(Id);
+		if (findById.isPresent()) {
+			Contact contact = findById.get();
+			contact.setIsActive('N');
+			contactRepo.save(contact);
 			return true;
 		} else {
 			return false;

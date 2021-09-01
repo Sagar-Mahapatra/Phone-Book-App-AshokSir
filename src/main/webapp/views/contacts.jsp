@@ -29,7 +29,7 @@
 			<div class="card-body">
 
 				<!-- Form Starts -->
-				<form:form class="form" action="save_contact" method="POST"
+				<form:form class="form" action="save_contact?contactId=${contact.contactId}" method="POST"
 					modelAttribute="contact">
 					<!-- 1st row -->
 					<div class="row">
