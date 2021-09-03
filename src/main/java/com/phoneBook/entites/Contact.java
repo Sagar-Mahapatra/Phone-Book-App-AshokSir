@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class Contact {
 
+	private Long contactId;
+
 	@NotNull
 	private String contactName;
 

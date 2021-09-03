@@ -52,7 +52,8 @@
 			</tbody>
 		</table>
 		<div class="container">
-			<a href="/Contact Info" class="btn btn-primary">Registration Page</a>
+			<a href="/phoneBook/Contact Info" class="btn btn-primary">Registration
+				Page</a>
 		</div>
 	</div>
 	<!-- 	table ends -->

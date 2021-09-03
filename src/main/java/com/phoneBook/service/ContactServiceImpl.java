@@ -37,11 +37,11 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public List<Contact> getAllContacts() {
+	public List<ContactEntity> getAllContacts() {
 
 		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
 
-		List<Contact> findAll = contactRepo.getAllActiveContacts();
+		List<ContactEntity> findAll = contactRepo.getAllActiveContacts();
 
 		return findAll;
 	}

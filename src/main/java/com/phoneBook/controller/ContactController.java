@@ -61,7 +61,7 @@ public class ContactController {
 	@GetMapping("/viewAllcontacts")
 	public String viewAllContacts(Model model) {
 		System.out.println("-------viewAllContacts() in controller class executed----------");
-		List<Contact> allContacts = contactService.getAllContacts();
+		List<ContactEntity> allContacts = contactService.getAllContacts();
 		System.out.println(allContacts);
 		model.addAttribute("allContacts", allContacts);
 		return "viewContacts";

@@ -9,7 +9,7 @@ public interface ContactService {
 
 	boolean saveContact(Contact contact);
 
-	List<Contact> getAllContacts();
+	List<ContactEntity> getAllContacts();
 
 	ContactEntity getContactById(Long Id);
 
