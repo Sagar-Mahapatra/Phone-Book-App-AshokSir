@@ -26,22 +26,15 @@ public class ContactServiceImpl implements ContactService {
 
 		BeanUtils.copyProperties(contact, entity);
 		ContactEntity save = contactRepo.save(entity);
-		if (save != null && save.getContactId() != null) {
 
-			return true;
-		} else {
-
-			return false;
-		}
+		return save != null && save.getContactId() != null;
 
 	}
 
 	@Override
 	public List<ContactEntity> getAllContacts() {
 
-		List<ContactEntity> findAll = contactRepo.getAllActiveContacts();
-
-		return findAll;
+		return contactRepo.getAllActiveContacts();
 	}
 
 	@Override
