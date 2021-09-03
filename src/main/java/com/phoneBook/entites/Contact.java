@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,12 +23,16 @@ public class Contact {
 	private Long contactId;
 
 	@Column(name = "contact_name")
+	@NotNull
 	private String contactName;
 
 	@Column(name = "contact_no")
+	@NotNull
 	private Long contactNumber;
 
 	@Column(name = "contact_email")
+	@Email
+	@NotNull
 	private String contactEmail;
 
 	@Column(name = "is_active")

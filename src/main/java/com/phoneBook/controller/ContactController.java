@@ -2,9 +2,12 @@ package com.phoneBook.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,10 +31,11 @@ public class ContactController {
 
 //	Save Contact handler
 	@PostMapping(value = "/save_contact")
-	public String saveContact(Contact contact, Model model) {
+	public String saveContact(@Valid Contact contact, BindingResult result, Model model) {
 
-		System.out.println("Contact::  " + contact);
-		System.out.println("-------saveContact() in controller  executed----------");
+		if (result.hasErrors()) {
+			return "contacts";
+		}
 
 		if (contactService.saveContact(contact)) {
 
@@ -51,6 +55,7 @@ public class ContactController {
 		return "contacts";
 
 	}
+
 // View All Contacts
 	@GetMapping("/viewAllcontacts")
 	public String viewAllContacts(Model model) {
@@ -73,7 +78,7 @@ public class ContactController {
 	}
 
 	@GetMapping("/deleteContact")
-	public String deleteContact(@RequestParam("cid") Long contactId,Model model) {
+	public String deleteContact(@RequestParam("cid") Long contactId, Model model) {
 		System.out.println("-------deleteContact() in controller class executed----------");
 		boolean Is_Deleted = contactService.deleteContactById(contactId);
 		if (Is_Deleted) {
