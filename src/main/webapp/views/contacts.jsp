@@ -56,8 +56,7 @@
 
 						<div class="col-md-6 div-relative">
 							<form:input type="text" class="form-control form-input"
-								id="contactName" name="contactName" path="contactName"
-								required="required" />
+								id="contactName" name="contactName" path="contactName" />
 							<h5 class="heading-absolute">Contact Name</h5>
 							<form:errors path="contactName" class="error" />
 						</div>
@@ -68,7 +67,7 @@
 
 						<div class="col-md-6 div-relative">
 							<input type="email" name="contactEmail" id="contactEmail"
-								class="form-control form-input" required="required" />
+								class="form-control form-input" />
 							<h5 class="heading-absolute">Contact Email</h5>
 							<form:errors path="contactEmail" class="error" />
 						</div>
@@ -79,8 +78,7 @@
 
 						<div class="col-md-6 div-relative">
 							<form:input type="number" class="form-control form-input"
-								id="contactNumber" name="contactNumber" path="contactNumber"
-								required="required" />
+								id="contactNumber" name="contactNumber" path="contactNumber" />
 							<h5 class="heading-absolute">Contact Number</h5>
 							<form:errors path="contactNumber" class="error" />
 						</div>
