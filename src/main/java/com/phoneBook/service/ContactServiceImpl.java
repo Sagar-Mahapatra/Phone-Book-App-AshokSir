@@ -3,9 +3,11 @@ package com.phoneBook.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.phoneBook.entites.Contact;
+import com.phoneBook.entites.ContactEntity;
 import com.phoneBook.repository.ContactRepository;
 
 @Service
@@ -19,10 +21,11 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean saveContact(Contact contact) {
-		contact.setIsActive('Y');
+		ContactEntity entity = new ContactEntity();
+		entity.setIsActive('Y');
 		System.out.println("----------saveContact() in ContactServiceImpl class executed--------");
-
-		Contact save = contactRepo.save(contact);
+		BeanUtils.copyProperties(contact, entity);
+		ContactEntity save = contactRepo.save(entity);
 		if (save != null && save.getContactId() != null) {
 			System.out.println("----------if block in saveContact() in ContactServiceImpl class executed--------");
 			return true;
@@ -44,9 +47,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public Contact getContactById(Long Id) {
+	public ContactEntity getContactById(Long Id) {
 		System.out.println("----------getContactById() in ContactServiceImpl class executed--------");
-		Optional<Contact> findById = contactRepo.findById(Id);
+		Optional<ContactEntity> findById = contactRepo.findById(Id);
 		if (findById.isPresent()) {
 			return findById.get();
 		}
@@ -56,9 +59,9 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public boolean deleteContactById(Long Id) {
 		System.out.println("----------deleteContactById() in ContactServiceImpl class executed--------");
-		Optional<Contact> findById = contactRepo.findById(Id);
+		Optional<ContactEntity> findById = contactRepo.findById(Id);
 		if (findById.isPresent()) {
-			Contact contact = findById.get();
+			ContactEntity contact = findById.get();
 			contact.setIsActive('N');
 			contactRepo.save(contact);
 			return true;

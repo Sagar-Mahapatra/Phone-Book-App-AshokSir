@@ -34,6 +34,10 @@
 	left: 0rem;
 	opacity: 1;
 }
+
+.error {
+	color: red;
+}
 </style>
 </head>
 <body>

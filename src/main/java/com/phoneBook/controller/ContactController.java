@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.phoneBook.entites.Contact;
+import com.phoneBook.entites.ContactEntity;
 import com.phoneBook.service.ContactService;
 
 @Controller
@@ -70,7 +71,7 @@ public class ContactController {
 	@GetMapping("/editContact")
 	public String editContact(@RequestParam("cid") Long contactId, Model model) {
 		System.out.println("-------editContact() in controller class executed----------");
-		Contact contactById = contactService.getContactById(contactId);
+		ContactEntity contactById = contactService.getContactById(contactId);
 		model.addAttribute("contact", contactById);
 		System.out.println(contactById);
 		return "contacts";

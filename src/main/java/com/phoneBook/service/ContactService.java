@@ -3,6 +3,7 @@ package com.phoneBook.service;
 import java.util.List;
 
 import com.phoneBook.entites.Contact;
+import com.phoneBook.entites.ContactEntity;
 
 public interface ContactService {
 
@@ -10,7 +11,7 @@ public interface ContactService {
 
 	List<Contact> getAllContacts();
 
-	Contact getContactById(Long Id);
+	ContactEntity getContactById(Long Id);
 
 	boolean deleteContactById(Long Id);
 
