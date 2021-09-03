@@ -23,14 +23,14 @@ public class ContactServiceImpl implements ContactService {
 	public boolean saveContact(Contact contact) {
 		ContactEntity entity = new ContactEntity();
 		entity.setIsActive('Y');
-		System.out.println("----------saveContact() in ContactServiceImpl class executed--------");
+
 		BeanUtils.copyProperties(contact, entity);
 		ContactEntity save = contactRepo.save(entity);
 		if (save != null && save.getContactId() != null) {
-			System.out.println("----------if block in saveContact() in ContactServiceImpl class executed--------");
+
 			return true;
 		} else {
-			System.out.println("----------catch block in saveContact() in ContactServiceImpl class executed--------");
+
 			return false;
 		}
 
@@ -39,8 +39,6 @@ public class ContactServiceImpl implements ContactService {
 	@Override
 	public List<ContactEntity> getAllContacts() {
 
-		System.out.println("----------getAllContacts() in ContactServiceImpl class executed--------");
-
 		List<ContactEntity> findAll = contactRepo.getAllActiveContacts();
 
 		return findAll;
@@ -48,7 +46,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public ContactEntity getContactById(Long Id) {
-		System.out.println("----------getContactById() in ContactServiceImpl class executed--------");
+
 		Optional<ContactEntity> findById = contactRepo.findById(Id);
 		if (findById.isPresent()) {
 			return findById.get();
@@ -58,7 +56,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean deleteContactById(Long Id) {
-		System.out.println("----------deleteContactById() in ContactServiceImpl class executed--------");
+
 		Optional<ContactEntity> findById = contactRepo.findById(Id);
 		if (findById.isPresent()) {
 			ContactEntity contact = findById.get();
