@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.phoneBook.AppConstants;
 import com.phoneBook.entites.Contact;
 import com.phoneBook.entites.ContactEntity;
 import com.phoneBook.props.AppProps;
@@ -31,8 +32,8 @@ public class ContactController {
 	@GetMapping("/Contact Info")
 	public String loadForm(Model model) {
 
-		model.addAttribute("contact", new Contact());
-		return "contacts";
+		model.addAttribute(AppConstants.CONTACT, new Contact());
+		return AppConstants.CONTACTS_PAGE;
 	}
 
 //	Save Contact handler
@@ -42,22 +43,22 @@ public class ContactController {
 		Map<String, String> messages = appProps.getMessages();
 
 		if (result.hasErrors()) {
-			return "contacts";
+			return AppConstants.CONTACTS_PAGE;
 		}
 
 		if (contactService.saveContact(contact)) {
 
-			model.addAttribute("success", messages.get("saveSuccess"));
+			model.addAttribute(AppConstants.SAVE_SUCCESS, messages.get("saveSuccess"));
 
 		}
 
 		else {
 
-			model.addAttribute("error", messages.get("saveFail"));
+			model.addAttribute(AppConstants.SAVE_ERROR, messages.get("saveFail"));
 
 		}
 
-		return "contacts";
+		return AppConstants.CONTACTS_PAGE;
 
 	}
 
@@ -67,8 +68,8 @@ public class ContactController {
 
 		List<ContactEntity> allContacts = contactService.getAllContacts();
 
-		model.addAttribute("allContacts", allContacts);
-		return "viewContacts";
+		model.addAttribute(AppConstants.ALL_CONTACTS, allContacts);
+		return AppConstants.VIEWCONTACTS_PAGE;
 
 	}
 
@@ -76,20 +77,22 @@ public class ContactController {
 	public String editContact(@RequestParam("cid") Long contactId, Model model) {
 
 		ContactEntity contactById = contactService.getContactById(contactId);
-		model.addAttribute("contact", contactById);
+		model.addAttribute(AppConstants.CONTACT, contactById);
 
-		return "contacts";
+		return AppConstants.CONTACTS_PAGE;
 
 	}
 
 	@GetMapping("/deleteContact")
 	public String deleteContact(@RequestParam("cid") Long contactId, Model model) {
 
+		Map<String, String> messages = appProps.getMessages();
+
 		boolean Is_Deleted = contactService.deleteContactById(contactId);
 		if (Is_Deleted) {
-			model.addAttribute("msg", "Contact Deleted...");
+			model.addAttribute(AppConstants.DELETE_SUCCESS, messages.get("deleteSuccess"));
 		} else {
-			model.addAttribute("msg", "Something went Wrong !!!");
+			model.addAttribute(AppConstants.DELETE_ERROR, messages.get("deleteFail"));
 		}
 
 		return "redirect:/viewAllcontacts";
