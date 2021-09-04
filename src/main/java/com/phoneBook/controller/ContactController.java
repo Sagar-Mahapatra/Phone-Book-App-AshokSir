@@ -1,6 +1,7 @@
 package com.phoneBook.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.phoneBook.entites.Contact;
 import com.phoneBook.entites.ContactEntity;
+import com.phoneBook.props.AppProps;
 import com.phoneBook.service.ContactService;
 
 @Controller
@@ -21,6 +23,9 @@ public class ContactController {
 
 	@Autowired
 	private ContactService contactService;
+
+	@Autowired
+	private AppProps appProps;
 
 //	Form load hander
 	@GetMapping("/Contact Info")
@@ -34,19 +39,21 @@ public class ContactController {
 	@PostMapping(value = "/save_contact")
 	public String saveContact(@Valid Contact contact, BindingResult result, Model model) {
 
+		Map<String, String> messages = appProps.getMessages();
+
 		if (result.hasErrors()) {
 			return "contacts";
 		}
 
 		if (contactService.saveContact(contact)) {
 
-			model.addAttribute("success", "Contact Saved Successfully...");
+			model.addAttribute("success", messages.get("saveSuccess"));
 
 		}
 
 		else {
 
-			model.addAttribute("error", "Something Went Wrong, Please try Again !!!");
+			model.addAttribute("error", messages.get("saveFail"));
 
 		}
 

@@ -16,3 +16,7 @@ spring:
     view:
       prefix: /views/
       suffix: .jsp
+app:
+  messages:
+      saveSuccess: Contact Saved Successfully...
+      saveFail: Something Went Wrong, Please try Again !!!
